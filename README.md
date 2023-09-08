@@ -69,10 +69,15 @@ Setelah data digabung menjadi 1 tabel, data tersebut dipindahkan ke python denga
 		data = pd.read_csv("TEST/wrag.csv")
 
 2) Data Cleaning
+   
 Sebelum diolah lebih lanjut, dilakukan pengecekan kualitas data, yaitu missing value, outlier, inconsistent format dan data duplikat. Dari pengecekan yang dilakukan, diketahui:
-a) Terdapat missing value pada kolom ‘product_category_name_english’, sehingga dilakukan pengisian sel kosong dengan ‘unknown’. 
+
+a) Terdapat missing value pada kolom ‘product_category_name_english’, sehingga dilakukan pengisian sel kosong dengan ‘unknown’.
+
 b) Ditemukan outlier data pada variabel harga. Sehingga perhitungan rata-rata harga produk (objektif ke 7) tidak menyertakan data outlier
+
 c) Ditemukan beberapa inconsistent format pada kolom  ‘product_category_name_english’ dan dillakukan regrouping. Terdapat beberapa inkonsistensi seperti pada kategori 'Home_appliances_2' dan 'home_appliances',  'home_confort' dan 'home_comfort_2',   'la_cuisine’ dan ‘food’, ‘signaling_and_security’, 'security_and_services', typo pada  'fashio_female_clothing'. Sehingga kategori tersebut diubah dengan menggunakan metode replace. Untuk mengatasi hal ini, tidak hanya dilakukan penyeragaman format, namun juga regrouping kategori produk karena kategori dianggap terlalu banyak. Regrouping dilakukan dengan cara membuat dataset baru dengan 2 kolom yaitu kolom ‘product_category_name_english’ dan ‘product_category’ yang diinginkan.
+
 d) Tidak terdapat data duplikat
 
 	Pengecekan dan penyesuaian data tersebut dilakukan dengan skrip dibawah ini:
@@ -115,7 +120,7 @@ d) Tidak terdapat data duplikat
 		data2 = data2[data2['order_status'] == 'delivered']
 
 
-3) Data Manipulation
+4) Data Manipulation
 
 a)  Mengetahui 5 kategori produk paling populer setiap tahunnya
 Dalam rangka melihat tren produk yang paling populer, pertama-tama (1) dilakukan parse date untuk melihat tren per tahun. Kemudian (2) dibuat pivot table untuk menghitung jumlah transaksi per kategori produk. Lalu (3) dilakukan sort value untuk mengetahui urutan produk paling populer. (4) kemudian data dirapihkan dengan mengubah data menjadi dataframe, merubah index dan melakukan merging data dengan fungsin concatenate. Hal tersebut dilakukan dengan skrip dibawah ini:
