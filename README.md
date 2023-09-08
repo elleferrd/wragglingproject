@@ -67,12 +67,12 @@ Setelah data digabung menjadi 1 tabel, data tersebut dipindahkan ke python denga
 		import numpy as np
 		data = pd.read_csv("TEST/wrag.csv")
 
-# Data Cleaning
+2) Data Cleaning
 Sebelum diolah lebih lanjut, dilakukan pengecekan kualitas data, yaitu missing value, outlier, inconsistent format dan data duplikat. Dari pengecekan yang dilakukan, diketahui:
-1) Terdapat missing value pada kolom ‘product_category_name_english’, sehingga dilakukan pengisian sel kosong dengan ‘unknown’. 
-2) Ditemukan outlier data pada variabel harga. Sehingga perhitungan rata-rata harga produk (objektif ke 7) tidak menyertakan data outlier
-3) Ditemukan beberapa inconsistent format pada kolom  ‘product_category_name_english’ dan dillakukan regrouping. Terdapat beberapa inkonsistensi seperti pada kategori 'Home_appliances_2' dan 'home_appliances',  'home_confort' dan 'home_comfort_2',   'la_cuisine’ dan ‘food’, ‘signaling_and_security’, 'security_and_services', typo pada  'fashio_female_clothing'. Sehingga kategori tersebut diubah dengan menggunakan metode replace. Untuk mengatasi hal ini, tidak hanya dilakukan penyeragaman format, namun juga regrouping kategori produk karena kategori dianggap terlalu banyak. Regrouping dilakukan dengan cara membuat dataset baru dengan 2 kolom yaitu kolom ‘product_category_name_english’ dan ‘product_category’ yang diinginkan.
-4) Tidak terdapat data duplikat
+a) Terdapat missing value pada kolom ‘product_category_name_english’, sehingga dilakukan pengisian sel kosong dengan ‘unknown’. 
+b) Ditemukan outlier data pada variabel harga. Sehingga perhitungan rata-rata harga produk (objektif ke 7) tidak menyertakan data outlier
+c) Ditemukan beberapa inconsistent format pada kolom  ‘product_category_name_english’ dan dillakukan regrouping. Terdapat beberapa inkonsistensi seperti pada kategori 'Home_appliances_2' dan 'home_appliances',  'home_confort' dan 'home_comfort_2',   'la_cuisine’ dan ‘food’, ‘signaling_and_security’, 'security_and_services', typo pada  'fashio_female_clothing'. Sehingga kategori tersebut diubah dengan menggunakan metode replace. Untuk mengatasi hal ini, tidak hanya dilakukan penyeragaman format, namun juga regrouping kategori produk karena kategori dianggap terlalu banyak. Regrouping dilakukan dengan cara membuat dataset baru dengan 2 kolom yaitu kolom ‘product_category_name_english’ dan ‘product_category’ yang diinginkan.
+d) Tidak terdapat data duplikat
 
 	Pengecekan dan penyesuaian data tersebut dilakukan dengan skrip dibawah ini:
 
@@ -114,9 +114,9 @@ Sebelum diolah lebih lanjut, dilakukan pengecekan kualitas data, yaitu missing v
 		data2 = data2[data2['order_status'] == 'delivered']
 
 
-# Data Manipulation
+3) Data Manipulation
 
-1) Mengetahui 5 kategori produk paling populer setiap tahunnya
+a)  Mengetahui 5 kategori produk paling populer setiap tahunnya
 Dalam rangka melihat tren produk yang paling populer, pertama-tama (1) dilakukan parse date untuk melihat tren per tahun. Kemudian (2) dibuat pivot table untuk menghitung jumlah transaksi per kategori produk. Lalu (3) dilakukan sort value untuk mengetahui urutan produk paling populer. (4) kemudian data dirapihkan dengan mengubah data menjadi dataframe, merubah index dan melakukan merging data dengan fungsin concatenate. Hal tersebut dilakukan dengan skrip dibawah ini:
 
 		#Parse Date
@@ -152,7 +152,7 @@ Hasil:
 ![nomor1](https://github.com/elleferrd/wragglingproject/assets/137087598/93fc39e7-25ab-4613-8268-68c37dbe4a45)
 
 
-2) Mengetahui 5 kategori produk dengan pendapatan paling besar setiap tahunnya
+b) Mengetahui 5 kategori produk dengan pendapatan paling besar setiap tahunnya
 Cara yang digunakan sama dengan poin 3a) untuk mengetahui 5 kategori produk paling populer setiap tahunnya. Perbedaannya adalah pemilihan values pada pivot dan data yang dirujuk. Berikut adalah skrip yang digunakan:
 		#membuat pivot tabel & mengurutkan dari yang paling tinngi
 		pivot_produk_penjualan = data2.pivot_table(values='price', index='product_category', columns='year',aggfunc='sum')
@@ -177,7 +177,7 @@ Hasil:
 ![nomor1](https://github.com/elleferrd/wragglingproject/assets/137087598/464401be-3f4e-437d-baf8-36e98ca0c0df)
 
 
-3) Growth pemesanan produk untuk kategori produk berdasarkan jumlah pesanan
+c) Growth pemesanan produk untuk kategori produk berdasarkan jumlah pesanan
 Pertumbuhan pemesanan produk dihitung dengan memasukan rumus “(jumlah pesanan tahun n dikurangi  jumlah pesanan tahun n-1)/jumlah pesanan tahun n-1” yang merujuk data pivot produk yang telah dibuat pada poin a). Berikut adalah skrip yang digunakan:
 		pivot_produk_popular['growth_2017']=(pivot_produk_popular[2017]-pivot_produk_popular[2016])/pivot_produk_popular[2016]
 		pivot_produk_popular['growth_2018']=(pivot_produk_popular[2018]-pivot_produk_popular[2017])/pivot_produk_popular[2017]
@@ -186,7 +186,7 @@ Pertumbuhan pemesanan produk dihitung dengan memasukan rumus “(jumlah pesanan 
 Hasil:
 
 
-4) Growth pemesanan produk untuk kategori produk berdasarkan jumlah pendapatan
+d) Growth pemesanan produk untuk kategori produk berdasarkan jumlah pendapatan
 Pertumbuhan penjualan produk dihitung dengan memasukan rumus “(jumlah nilai penjualan tahun n dikurangi  jumlah nilai penjualan tahun n-1)/jumlah nilai pesanan tahun n-1” yang merujuk data pivot produk yang telah dibuat pada poin b). Berikut adalah skrip yang digunakan:
 		pivot_produk_penjualan['growth_2017']=(pivot_produk_penjualan[2017]-pivot_produk_penjualan[2016])/pivot_produk_penjualan[2016]
 		pivot_produk_penjualan['growth_2018']=(pivot_produk_penjualan[2018]-pivot_produk_penjualan[2017])/pivot_produk_penjualan[2017]
@@ -195,7 +195,7 @@ Pertumbuhan penjualan produk dihitung dengan memasukan rumus “(jumlah nilai pe
 Hasil:
 
 
-5) Jumlah seller untuk masing-masing kategori produk
+e) Jumlah seller untuk masing-masing kategori produk
 Dalam rangka menghitung jumlah seller untuk masing-masing kategori produk, pertama-tama (1) dilakukan perhitungan jumlah seller per kategori produk dan tahun dengan menggunakan metode groupby dan nuninque. Kemudian (2) dibuat pivot table untuk merubah tahun menjadi kolom untuk mempermudah pembaca dalam melihat data. Kemudian, (3) dihitung growth per seller sebagai informasi tambahan yang dapat dipertimbangkan dan (4) dilakukan pengurutan data dari jumlah seller terbanyak pada tahun 2018. Berikut adalah skrip yang digunakan:
 
 		data_seller =data2.groupby(['product_category','year'])['seller_id'].nunique().reset_index()
@@ -209,7 +209,7 @@ Dalam rangka menghitung jumlah seller untuk masing-masing kategori produk, perta
 
 
 
-6) Jumlah jenis produk untuk masing-masing kategori produk
+f) Jumlah jenis produk untuk masing-masing kategori produk
 Pengolahan data untuk mengetahui jumlah jenis produk untuk masing-masing kategori produk sama dengan cara pengolahan data untuk mengetahui jumlah seller untuk masing-masing kategori produk, namun rujukan data dibedakan. Berikut adalah skrip yang digunakan:
 
 		data_product =data2.groupby(['product_category','year'])['product_id'].nunique().reset_index()
@@ -221,7 +221,7 @@ Pengolahan data untuk mengetahui jumlah jenis produk untuk masing-masing kategor
 
 	Hasil:
 
-7) Produk dengan harga rata-rata paling mahal
+g) Produk dengan harga rata-rata paling mahal
 Pengolahan rata-rata harga produk tidak menyertakan harga produk yang terlalu tinggi, Sehingga, langkah pertama yang dilakukan adalah filter data yang bukan outlier, kemudian dilakukan perhitungan rata-rata(mean) per produk dan sort values. Dan yang terakhir filter 10 data teratas. Skrip yang digunakan adalah sebagai berikut: 
 	
 		cekoutlier =cekoutlier[cekoutlier['cek'] == True]
