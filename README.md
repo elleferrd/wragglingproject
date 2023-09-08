@@ -197,6 +197,8 @@ Hasil:
 
 ![nomor1](https://github.com/elleferrd/wragglingproject/assets/137087598/93fc39e7-25ab-4613-8268-68c37dbe4a45)
 
+![produk popular](https://github.com/elleferrd/wragglingproject/assets/137087598/6a3cf08d-0be2-4a76-aa04-9247d14c31bb)
+
 
 b) Mengetahui 5 kategori produk dengan pendapatan paling besar setiap tahunnya
 Cara yang digunakan sama dengan poin 3a) untuk mengetahui 5 kategori produk paling populer setiap tahunnya. Perbedaannya adalah pemilihan values pada pivot dan data yang dirujuk. Berikut adalah skrip yang digunakan:
@@ -310,7 +312,8 @@ Hasil:
 
 ![data1](https://github.com/elleferrd/wragglingproject/assets/137087598/7e5fb27d-ce1f-4348-bcc0-ed3aa3b5bd2f)
 
-![produk popular](https://github.com/elleferrd/wragglingproject/assets/137087598/6a3cf08d-0be2-4a76-aa04-9247d14c31bb)
+![data1](https://github.com/elleferrd/wragglingproject/assets/137087598/7eabecc9-db00-4c91-8c27-6aaa4fa4a324)
+
 
 
 d) Growth pemesanan produk untuk kategori produk berdasarkan jumlah pendapatan
@@ -370,10 +373,54 @@ Dalam rangka menghitung jumlah seller untuk masing-masing kategori produk, perta
 		pivot_seller['growth_2018']=(pivot_seller[2018]-pivot_seller[2017])/pivot_seller[2017]
 		pivot_seller = pivot_seller.sort_values(by=2018, ascending=False)
 		pivot_seller
+  		#visualisasi
+    		# Sample data for the bar plots
+		categories = pivot_seller['product_category']
+		values1 = pivot_seller[2016]
+		values2 = pivot_seller[2017]
+		values3 =  pivot_seller[2018]
+		#Sort the data for each bar plot in descending order
+		sorted_indices1 = np.argsort(values1)[::-1]
+		sorted_categories1 = [categories[i] for i in sorted_indices1]
+		sorted_values1 = [values1[i] for i in sorted_indices1]
+		sorted_indices2 = np.argsort(values2)[::-1]
+		sorted_categories2 = [categories[i] for i in sorted_indices2]
+		sorted_values2 = [values2[i] for i in sorted_indices2]
+		sorted_indices3 = np.argsort(values3)[::-1]
+		sorted_categories3 = [categories[i] for i in sorted_indices3]
+		sorted_values3 = [values3[i] for i in sorted_indices3]
+		#Create subplots with three columns
+		fig, axs = plt.subplots(1, 3, figsize=(15, 5))
+		#Plot the first sorted bar plot
+		axs[0].bar(sorted_categories1, sorted_values1, color='skyblue')
+		axs[0].set_title('2016')
+		#Plot the second sorted bar plot
+		axs[1].bar(sorted_categories2, sorted_values2, color='salmon')
+		axs[1].set_title('2017')
+		#Plot the third sorted bar plot
+		axs[2].bar(sorted_categories3, sorted_values3, color='lightgreen')
+		axs[2].set_title('2018)')
+		#Rotate x-axis labels for better readability (optional)
+		for ax in axs:
+		    ax.set_xticklabels(ax.get_xticklabels(), rotation=45, ha='right')
+		#Add labels and titles
+		for ax in axs:
+		    ax.set_xlabel('Categories')
+		    ax.set_ylabel('Values')
+	      #add value label in each bar
+		for ax, values in zip(axs, [values1,values2,values3]):
+		    for i, v in enumerate(values):
+		        ax.text(i, v + 1, str(v), ha='center', va='bottom', fontsize=10)
+		#Adjust the layout to prevent overlapping
+		plt.tight_layout()
+		#Display the plots
+		plt.show()
 
 Hasil:
 
 ![data1](https://github.com/elleferrd/wragglingproject/assets/137087598/6d55e81a-c6e8-4a8a-8640-62d5341ab3a8)
+
+![data1](https://github.com/elleferrd/wragglingproject/assets/137087598/f4bb9206-d3b7-4031-8ecd-90e6a8109eb8)
 
 
 f) Jumlah jenis produk untuk masing-masing kategori produk
@@ -385,11 +432,54 @@ Pengolahan data untuk mengetahui jumlah jenis produk untuk masing-masing kategor
 		pivot_product['growth_2018']=(pivot_product[2018]-pivot_product[2017])/pivot_product[2017]
 		pivot_product = pivot_product.sort_values(by=2018, ascending=False)
 		pivot_product
+  		#visualisasi
+		categories = pivot_seller['product_category']
+		values1 = pivot_produk[2016]
+		values2 = pivot_produk[2017]
+		values3 =  pivot_produk[2018]
+		#Sort the data for each bar plot in descending order
+		sorted_indices1 = np.argsort(values1)[::-1]
+		sorted_categories1 = [categories[i] for i in sorted_indices1]
+		sorted_values1 = [values1[i] for i in sorted_indices1]
+		sorted_indices2 = np.argsort(values2)[::-1]
+		sorted_categories2 = [categories[i] for i in sorted_indices2]
+		sorted_values2 = [values2[i] for i in sorted_indices2]
+		sorted_indices3 = np.argsort(values3)[::-1]
+		sorted_categories3 = [categories[i] for i in sorted_indices3]
+		sorted_values3 = [values3[i] for i in sorted_indices3]
+		#Create subplots with three columns
+		fig, axs = plt.subplots(1, 3, figsize=(15, 5))
+		#Plot the first sorted bar plot
+		axs[0].bar(sorted_categories1, sorted_values1, color='skyblue')
+		axs[0].set_title('2016')
+		#Plot the second sorted bar plot
+		axs[1].bar(sorted_categories2, sorted_values2, color='salmon')
+		axs[1].set_title('2017')
+		#Plot the third sorted bar plot
+		axs[2].bar(sorted_categories3, sorted_values3, color='lightgreen')
+		axs[2].set_title('2018)')
+		#Rotate x-axis labels for better readability (optional)
+		for ax in axs:
+		    ax.set_xticklabels(ax.get_xticklabels(), rotation=45, ha='right')
+		#Add labels and titles
+		for ax in axs:
+		    ax.set_xlabel('Categories')
+		    ax.set_ylabel('Values')
+		#add value label in each bar
+		for ax, values in zip(axs, [values1,values2,values3]):
+		    for i, v in enumerate(values):
+		        ax.text(i, v + 1, str(v), ha='center', va='bottom', fontsize=10)
+		#Adjust the layout to prevent overlapping
+		plt.tight_layout()
+		#Display the plots
+		plt.show()
+
 
 Hasil:
 
  ![data1](https://github.com/elleferrd/wragglingproject/assets/137087598/bceb54bb-924d-4bcf-bfcc-b76f0498a73b)
 
+![data1](https://github.com/elleferrd/wragglingproject/assets/137087598/5503fe3f-7345-4c05-8063-5d2457b087b4)
 
 g) Produk dengan harga rata-rata paling mahal
 Pengolahan rata-rata harga produk tidak menyertakan harga produk yang terlalu tinggi, Sehingga, langkah pertama yang dilakukan adalah filter data yang bukan outlier, kemudian dilakukan perhitungan rata-rata(mean) per produk dan sort values. Dan yang terakhir filter 10 data teratas. Skrip yang digunakan adalah sebagai berikut: 
@@ -430,43 +520,4 @@ edangkan top 5 growth jumlah produk pada tahun 2017 adalah (1) office, (2) f&b, 
 Produk dengna harga rata-rata paling mahal adalah komputer, oven dan mesin kopi, industri agro, furnitur kamar, alat keselamatan konstruksi, furnitur kantor, ac, alat musik,  alat lampu konstruksi, dan jam tangan.
 
 Kesimpulan yang dapat ditarik dari pengolahan data tersebut adalah semakin banyak jumlah seller dan variasi barang, maka akan semakin banyak pula transaksi. Sehingga, aksi bisnis yang direkomendasikan adalah menarik lebih banyak seller yang memiliki variasi barang yang banyak dan beragam, terutama untuk produk-produk yang memiliki nilai jual tinggi seperti komputer, oven dan mesiun kopi, industri agro dan furnitur.
-
-# Respiratory & visualisasi data
-
-
-
-
-![pie chart](https://github.com/elleferrd/wragglingproject/assets/137087598/cc74f889-c1fa-485b-9767-111b32562857)
-
-
-
-
-Skrip grafik ketiga:
-
-		#mengisi sel kosong
-		pivot_seller.reset_index(drop=False, inplace = True)
-		pivot_product.reset_index(drop=False, inplace = True)
-		pivot_seller = pivot_seller.fillna(0)
-		pivot_product= pivot_product.fillna(0)
-		import matplotlib.pyplot as plt
-		import numpy as np
-		#Sample data for the bar plots
-		x = pivot_seller['product_category']
-		y1 = pivot_seller[2016]
-		y2 = pivot_seller[2017]
-		y3 = pivot_seller[2018]
-		#Create a figure with three subplots (one for each pie chart)
-		fig, axs = plt.subplots(1, 3, figsize=(15, 5))
-		#Create the first pie chart using 'Value1'
-		axs[0].pie(pivot_seller[2016], labels=pivot_seller['product_category'], autopct='%1.1f%%')
-		axs[0].set_title('2016')
-		#Create the second pie chart using 'Value2'
-		axs[1].pie(pivot_seller[2017], labels=pivot_seller['product_category'], autopct='%1.1f%%')
-		axs[1].set_title('2017')
-		#Create the third pie chart using 'Value3'
-		axs[2].pie(pivot_seller[2018], labels=pivot_seller['product_category'], autopct='%1.1f%%')
-		axs[2].set_title('2018')
-		#Adjust the layout and display the charts
-		plt.tight_layout()
-		plt.show()
 
