@@ -190,7 +190,8 @@ Pertumbuhan pemesanan produk dihitung dengan memasukan rumus “(jumlah pesanan 
 		pivot_produk_popular
 
 Hasil:
-![data1](https://github.com/elleferrd/wragglingproject/assets/137087598/f57b521a-35d1-4e2b-885b-0b9859927229)
+
+![data1](https://github.com/elleferrd/wragglingproject/assets/137087598/7e5fb27d-ce1f-4348-bcc0-ed3aa3b5bd2f)
 
 
 d) Growth pemesanan produk untuk kategori produk berdasarkan jumlah pendapatan
@@ -200,7 +201,7 @@ Pertumbuhan penjualan produk dihitung dengan memasukan rumus “(jumlah nilai pe
 		pivot_produk_penjualan
 
 Hasil:
-
+![data1](https://github.com/elleferrd/wragglingproject/assets/137087598/f57b521a-35d1-4e2b-885b-0b9859927229)
 
 e) Jumlah seller untuk masing-masing kategori produk
 Dalam rangka menghitung jumlah seller untuk masing-masing kategori produk, pertama-tama (1) dilakukan perhitungan jumlah seller per kategori produk dan tahun dengan menggunakan metode groupby dan nuninque. Kemudian (2) dibuat pivot table untuk merubah tahun menjadi kolom untuk mempermudah pembaca dalam melihat data. Kemudian, (3) dihitung growth per seller sebagai informasi tambahan yang dapat dipertimbangkan dan (4) dilakukan pengurutan data dari jumlah seller terbanyak pada tahun 2018. Berikut adalah skrip yang digunakan:
@@ -214,6 +215,7 @@ Dalam rangka menghitung jumlah seller untuk masing-masing kategori produk, perta
 
 	Hasil:
 
+![data1](https://github.com/elleferrd/wragglingproject/assets/137087598/6d55e81a-c6e8-4a8a-8640-62d5341ab3a8)
 
 
 f) Jumlah jenis produk untuk masing-masing kategori produk
@@ -228,6 +230,9 @@ Pengolahan data untuk mengetahui jumlah jenis produk untuk masing-masing kategor
 
 	Hasil:
 
+ ![data1](https://github.com/elleferrd/wragglingproject/assets/137087598/bceb54bb-924d-4bcf-bfcc-b76f0498a73b)
+
+
 g) Produk dengan harga rata-rata paling mahal
 Pengolahan rata-rata harga produk tidak menyertakan harga produk yang terlalu tinggi, Sehingga, langkah pertama yang dilakukan adalah filter data yang bukan outlier, kemudian dilakukan perhitungan rata-rata(mean) per produk dan sort values. Dan yang terakhir filter 10 data teratas. Skrip yang digunakan adalah sebagai berikut: 
 	
@@ -238,6 +243,7 @@ Pengolahan rata-rata harga produk tidak menyertakan harga produk yang terlalu ti
 
 	Hasil:
 
+![data1](https://github.com/elleferrd/wragglingproject/assets/137087598/da5f5415-2350-4da2-b579-f00c8894e187)
 
 
 
