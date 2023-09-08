@@ -152,6 +152,46 @@ Dalam rangka melihat tren produk yang paling populer, pertama-tama (1) dilakukan
 		top_2018.reset_index(drop=False, inplace = True)
 		
 		Datatren = pd.concat([top_2016, top_2017, top_2018], axis=1)
+
+  		#visualisasi
+		#Sample data for the bar plots
+		categories = pivot_produk_popular['product_category']
+		values1 = pivot_produk_popular[2016]
+		values2 = pivot_produk_popular[2017]
+		values3 =  pivot_produk_popular[2018]
+		#Sort the data for each bar plot in descending order
+		sorted_indices1 = np.argsort(values1)[::-1]
+		sorted_categories1 = [categories[i] for i in sorted_indices1]
+		sorted_values1 = [values1[i] for i in sorted_indices1]
+		sorted_indices2 = np.argsort(values2)[::-1]
+		sorted_categories2 = [categories[i] for i in sorted_indices2]
+		sorted_values2 = [values2[i] for i in sorted_indices2]
+		sorted_indices3 = np.argsort(values3)[::-1]
+		sorted_categories3 = [categories[i] for i in sorted_indices3]
+		sorted_values3 = [values3[i] for i in sorted_indices3]
+		#Create subplots with three columns
+		fig, axs = plt.subplots(1, 3, figsize=(15, 5))
+		#Plot the first sorted bar plot
+		axs[0].bar(sorted_categories1, sorted_values1, color='skyblue')
+		axs[0].set_title('2016')
+		#Plot the second sorted bar plot
+		axs[1].bar(sorted_categories2, sorted_values2, color='salmon')
+		axs[1].set_title('2017')
+		#Plot the third sorted bar plot
+		axs[2].bar(sorted_categories3, sorted_values3, color='lightgreen')
+		axs[2].set_title('2018)')
+		#Rotate x-axis labels for better readability (optional)
+		for ax in axs:
+		    ax.set_xticklabels(ax.get_xticklabels(), rotation=45, ha='right')
+		#Add labels and titles
+		for ax in axs:
+		    ax.set_xlabel('Categories')
+		    ax.set_ylabel('Values')
+		#Adjust the layout to prevent overlapping
+		plt.tight_layout()
+		#Display the plots
+		plt.show()
+
 	
 Hasil:
 
@@ -178,9 +218,49 @@ Cara yang digunakan sama dengan poin 3a) untuk mengetahui 5 kategori produk pali
 		#join kembali
 		datapenjualan = pd.concat([top_2016, top_2017, top_2018], axis=1)
 
+		#visualisasi
+		#Sample data for the bar plots
+		categories = pivot_produk_penjualan['product_category']
+		values1 = pivot_produk_penjualan[2016]
+		values2 = pivot_produk_penjualan[2017]
+		values3 =  pivot_produk_penjualan[2018]
+		#Sort the data for each bar plot in descending order
+		sorted_indices1 = np.argsort(values1)[::-1]
+		sorted_categories1 = [categories[i] for i in sorted_indices1]
+		sorted_values1 = [values1[i] for i in sorted_indices1]
+		sorted_indices2 = np.argsort(values2)[::-1]
+		sorted_categories2 = [categories[i] for i in sorted_indices2]
+		sorted_values2 = [values2[i] for i in sorted_indices2]
+		sorted_indices3 = np.argsort(values3)[::-1]
+		sorted_categories3 = [categories[i] for i in sorted_indices3]
+		sorted_values3 = [values3[i] for i in sorted_indices3]
+		#Create subplots with three columns
+		fig, axs = plt.subplots(1, 3, figsize=(15, 5))
+		#Plot the first sorted bar plot
+		axs[0].bar(sorted_categories1, sorted_values1, color='skyblue')
+		axs[0].set_title('2016')
+		#Plot the second sorted bar plot
+		axs[1].bar(sorted_categories2, sorted_values2, color='salmon')
+		axs[1].set_title('2017')
+		#Plot the third sorted bar plot
+		axs[2].bar(sorted_categories3, sorted_values3, color='lightgreen')
+		axs[2].set_title('2018)')
+		#Rotate x-axis labels for better readability (optional)
+		for ax in axs:
+		    ax.set_xticklabels(ax.get_xticklabels(), rotation=45, ha='right')
+		#Add labels and titles
+		for ax in axs:
+		    ax.set_xlabel('Categories')
+		    ax.set_ylabel('Values')
+		#Adjust the layout to prevent overlapping
+		plt.tight_layout()
+		#Display the plots
+		plt.show()
 Hasil:
 
 ![nomor1](https://github.com/elleferrd/wragglingproject/assets/137087598/464401be-3f4e-437d-baf8-36e98ca0c0df)
+
+![penjualan](https://github.com/elleferrd/wragglingproject/assets/137087598/aa06d246-c9fa-4e10-b307-63fd9027d10d)
 
 
 c) Growth pemesanan produk untuk kategori produk berdasarkan jumlah pesanan
@@ -189,10 +269,48 @@ Pertumbuhan pemesanan produk dihitung dengan memasukan rumus “(jumlah pesanan 
 		pivot_produk_popular['growth_2017']=(pivot_produk_popular[2017]-pivot_produk_popular[2016])/pivot_produk_popular[2016]
 		pivot_produk_popular['growth_2018']=(pivot_produk_popular[2018]-pivot_produk_popular[2017])/pivot_produk_popular[2017]
 		pivot_produk_popular
+		#visualisasi
+		#Sample data for the bar plots
+		categories = pivot_produk_popular['product_category']
+		values1 = pivot_produk_popular['growth_2017']
+		values2 = pivot_produk_popular['growth_2018']
+		#Sort the data for each bar plot in descending order
+		sorted_indices1 = np.argsort(values1)[::-1]
+		sorted_categories1 = [categories[i] for i in sorted_indices1]
+		sorted_values1 = [values1[i] for i in sorted_indices1]
+		sorted_indices2 = np.argsort(values2)[::-1]
+		sorted_categories2 = [categories[i] for i in sorted_indices2]
+		sorted_values2 = [values2[i] for i in sorted_indices2]
+		sorted_indices3 = np.argsort(values3)[::-1]
+		sorted_categories3 = [categories[i] for i in sorted_indices3]
+		sorted_values3 = [values3[i] for i in sorted_indices3]
+		#Create subplots with three columns
+		fig, axs = plt.subplots(1, 2, figsize=(15, 5))
+		#Plot the first sorted bar plot
+		axs[0].bar(sorted_categories1, sorted_values1, color='skyblue')
+		axs[0].set_title('2016')
+		#Plot the second sorted bar plot
+		axs[1].bar(sorted_categories2, sorted_values2, color='salmon')
+		axs[1].set_title('2017')
+		#Rotate x-axis labels for better readability (optional)
+		for ax in axs:
+		    ax.set_xticklabels(ax.get_xticklabels(), rotation=45, ha='right')
+		#Add labels and titles
+		for ax in axs:
+		    ax.set_xlabel('Categories')
+		    ax.set_ylabel('Values')
+		#Adjust the layout to prevent overlapping
+		plt.tight_layout()
+		#Display the plots
+		plt.show()
+
+
 
 Hasil:
 
 ![data1](https://github.com/elleferrd/wragglingproject/assets/137087598/7e5fb27d-ce1f-4348-bcc0-ed3aa3b5bd2f)
+
+![produk popular](https://github.com/elleferrd/wragglingproject/assets/137087598/6a3cf08d-0be2-4a76-aa04-9247d14c31bb)
 
 
 d) Growth pemesanan produk untuk kategori produk berdasarkan jumlah pendapatan
@@ -201,9 +319,47 @@ Pertumbuhan penjualan produk dihitung dengan memasukan rumus “(jumlah nilai pe
   		pivot_produk_penjualan['growth_2017']=(pivot_produk_penjualan[2017]-pivot_produk_penjualan[2016])/pivot_produk_penjualan[2016]
 		pivot_produk_penjualan['growth_2018']=(pivot_produk_penjualan[2018]-pivot_produk_penjualan[2017])/pivot_produk_penjualan[2017]
 		pivot_produk_penjualan
+		#visualisasi
+		#Sample data for the bar plots
+		categories = pivot_produk_penjualan['product_category']
+		values1 = pivot_produk_penjualan['growth_2017']
+		values2 = pivot_produk_penjualan['growth_2018']
+		#Sort the data for each bar plot in descending order
+		sorted_indices1 = np.argsort(values1)[::-1]
+		sorted_categories1 = [categories[i] for i in sorted_indices1]
+		sorted_values1 = [values1[i] for i in sorted_indices1]
+		sorted_indices2 = np.argsort(values2)[::-1]
+		sorted_categories2 = [categories[i] for i in sorted_indices2]
+		sorted_values2 = [values2[i] for i in sorted_indices2]
+		sorted_indices3 = np.argsort(values3)[::-1]
+		sorted_categories3 = [categories[i] for i in sorted_indices3]
+		sorted_values3 = [values3[i] for i in sorted_indices3]
+		#Create subplots with three columns
+		fig, axs = plt.subplots(1, 2, figsize=(15, 5))
+		#Plot the first sorted bar plot
+		axs[0].bar(sorted_categories1, sorted_values1, color='skyblue')
+		axs[0].set_title('2016')
+		#Plot the second sorted bar plot
+		axs[1].bar(sorted_categories2, sorted_values2, color='salmon')
+		axs[1].set_title('2017')
+		#Rotate x-axis labels for better readability (optional)
+		for ax in axs:
+		    ax.set_xticklabels(ax.get_xticklabels(), rotation=45, ha='right')
+		#Add labels and titles
+		for ax in axs:
+		    ax.set_xlabel('Categories')
+		    ax.set_ylabel('Values')
+		#Adjust the layout to prevent overlapping
+		plt.tight_layout()
+		#Display the plots
+		plt.show()
+
 
 Hasil:
 ![data1](https://github.com/elleferrd/wragglingproject/assets/137087598/f57b521a-35d1-4e2b-885b-0b9859927229)
+
+![data1](https://github.com/elleferrd/wragglingproject/assets/137087598/7a1581d6-4e98-4079-8fe1-4ed799f18fc8)
+
 
 e) Jumlah seller untuk masing-masing kategori produk
 Dalam rangka menghitung jumlah seller untuk masing-masing kategori produk, pertama-tama (1) dilakukan perhitungan jumlah seller per kategori produk dan tahun dengan menggunakan metode groupby dan nuninque. Kemudian (2) dibuat pivot table untuk merubah tahun menjadi kolom untuk mempermudah pembaca dalam melihat data. Kemudian, (3) dihitung growth per seller sebagai informasi tambahan yang dapat dipertimbangkan dan (4) dilakukan pengurutan data dari jumlah seller terbanyak pada tahun 2018. Berikut adalah skrip yang digunakan:
@@ -278,93 +434,12 @@ Kesimpulan yang dapat ditarik dari pengolahan data tersebut adalah semakin banya
 # Respiratory & visualisasi data
 
 
-![produk popular](https://github.com/elleferrd/wragglingproject/assets/137087598/6a3cf08d-0be2-4a76-aa04-9247d14c31bb)
-
-![penjualan](https://github.com/elleferrd/wragglingproject/assets/137087598/aa06d246-c9fa-4e10-b307-63fd9027d10d)
 
 
 ![pie chart](https://github.com/elleferrd/wragglingproject/assets/137087598/cc74f889-c1fa-485b-9767-111b32562857)
 
 
-Skrip grafik pertama
 
-		#Sample data for the bar plots
-		categories = pivot_produk_popular['product_category']
-		values1 = pivot_produk_popular[2016]
-		values2 = pivot_produk_popular[2017]
-		values3 =  pivot_produk_popular[2018]
-		#Sort the data for each bar plot in descending order
-		sorted_indices1 = np.argsort(values1)[::-1]
-		sorted_categories1 = [categories[i] for i in sorted_indices1]
-		sorted_values1 = [values1[i] for i in sorted_indices1]
-		sorted_indices2 = np.argsort(values2)[::-1]
-		sorted_categories2 = [categories[i] for i in sorted_indices2]
-		sorted_values2 = [values2[i] for i in sorted_indices2]
-		sorted_indices3 = np.argsort(values3)[::-1]
-		sorted_categories3 = [categories[i] for i in sorted_indices3]
-		sorted_values3 = [values3[i] for i in sorted_indices3]
-		#Create subplots with three columns
-		fig, axs = plt.subplots(1, 3, figsize=(15, 5))
-		#Plot the first sorted bar plot
-		axs[0].bar(sorted_categories1, sorted_values1, color='skyblue')
-		axs[0].set_title('2016')
-		#Plot the second sorted bar plot
-		axs[1].bar(sorted_categories2, sorted_values2, color='salmon')
-		axs[1].set_title('2017')
-		#Plot the third sorted bar plot
-		axs[2].bar(sorted_categories3, sorted_values3, color='lightgreen')
-		axs[2].set_title('2018)')
-		#Rotate x-axis labels for better readability (optional)
-		for ax in axs:
-		    ax.set_xticklabels(ax.get_xticklabels(), rotation=45, ha='right')
-		#Add labels and titles
-		for ax in axs:
-		    ax.set_xlabel('Categories')
-		    ax.set_ylabel('Values')
-		#Adjust the layout to prevent overlapping
-		plt.tight_layout()
-		#Display the plots
-		plt.show()
-
-Skrip grafik kedua:
-
-		#Sample data for the bar plots
-		categories = pivot_produk_penjualan['product_category']
-		values1 = pivot_produk_penjualan[2016]
-		values2 = pivot_produk_penjualan[2017]
-		values3 =  pivot_produk_penjualan[2018]
-		#Sort the data for each bar plot in descending order
-		sorted_indices1 = np.argsort(values1)[::-1]
-		sorted_categories1 = [categories[i] for i in sorted_indices1]
-		sorted_values1 = [values1[i] for i in sorted_indices1]
-		sorted_indices2 = np.argsort(values2)[::-1]
-		sorted_categories2 = [categories[i] for i in sorted_indices2]
-		sorted_values2 = [values2[i] for i in sorted_indices2]
-		sorted_indices3 = np.argsort(values3)[::-1]
-		sorted_categories3 = [categories[i] for i in sorted_indices3]
-		sorted_values3 = [values3[i] for i in sorted_indices3]
-		#Create subplots with three columns
-		fig, axs = plt.subplots(1, 3, figsize=(15, 5))
-		#Plot the first sorted bar plot
-		axs[0].bar(sorted_categories1, sorted_values1, color='skyblue')
-		axs[0].set_title('2016')
-		#Plot the second sorted bar plot
-		axs[1].bar(sorted_categories2, sorted_values2, color='salmon')
-		axs[1].set_title('2017')
-		#Plot the third sorted bar plot
-		axs[2].bar(sorted_categories3, sorted_values3, color='lightgreen')
-		axs[2].set_title('2018)')
-		#Rotate x-axis labels for better readability (optional)
-		for ax in axs:
-		    ax.set_xticklabels(ax.get_xticklabels(), rotation=45, ha='right')
-		#Add labels and titles
-		for ax in axs:
-		    ax.set_xlabel('Categories')
-		    ax.set_ylabel('Values')
-		#Adjust the layout to prevent overlapping
-		plt.tight_layout()
-		#Display the plots
-		plt.show()
 
 Skrip grafik ketiga:
 
