@@ -19,6 +19,7 @@ Data yang digunakan adalah data tentang order dan  produk yang meliputi informas
 6) Price				: Harga produk yang dipesan
 7) Order_status		            	: Status pesanan (terkirim, cancel, dsb)
 8) Order_purchase_timestamp   		: Waktu pesanan
+
 Data tersebut diperoleh dari select and join data Products_dataset, product_category_name_translation, order_items_dataset, order_dataset dari database olist yang dirujuk oleh Pacmann.id sebagai raw data untuk projek ini.
 
 # Pengecekan data
