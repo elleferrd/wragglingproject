@@ -184,7 +184,8 @@ Hasil:
 
 
 c) Growth pemesanan produk untuk kategori produk berdasarkan jumlah pesanan
-Pertumbuhan pemesanan produk dihitung dengan memasukan rumus “(jumlah pesanan tahun n dikurangi  jumlah pesanan tahun n-1)/jumlah pesanan tahun n-1” yang merujuk data pivot produk yang telah dibuat pada poin a). Berikut adalah skrip yang digunakan:
+Pertumbuhan pemesanan produk dihitung dengan memasukan rumus “(jumlah pesanan tahun n dikurangi  jumlah pesanan tahun n-1)/jumlah pesanan tahun n-1” yang merujuk data pivot produk yang telah dibuat pada poin a).Berikut adalah skrip yang digunakan:
+
 		pivot_produk_popular['growth_2017']=(pivot_produk_popular[2017]-pivot_produk_popular[2016])/pivot_produk_popular[2016]
 		pivot_produk_popular['growth_2018']=(pivot_produk_popular[2018]-pivot_produk_popular[2017])/pivot_produk_popular[2017]
 		pivot_produk_popular
@@ -196,7 +197,8 @@ Hasil:
 
 d) Growth pemesanan produk untuk kategori produk berdasarkan jumlah pendapatan
 Pertumbuhan penjualan produk dihitung dengan memasukan rumus “(jumlah nilai penjualan tahun n dikurangi  jumlah nilai penjualan tahun n-1)/jumlah nilai pesanan tahun n-1” yang merujuk data pivot produk yang telah dibuat pada poin b). Berikut adalah skrip yang digunakan:
-		pivot_produk_penjualan['growth_2017']=(pivot_produk_penjualan[2017]-pivot_produk_penjualan[2016])/pivot_produk_penjualan[2016]
+		
+  		pivot_produk_penjualan['growth_2017']=(pivot_produk_penjualan[2017]-pivot_produk_penjualan[2016])/pivot_produk_penjualan[2016]
 		pivot_produk_penjualan['growth_2018']=(pivot_produk_penjualan[2018]-pivot_produk_penjualan[2017])/pivot_produk_penjualan[2017]
 		pivot_produk_penjualan
 
@@ -213,7 +215,7 @@ Dalam rangka menghitung jumlah seller untuk masing-masing kategori produk, perta
 		pivot_seller = pivot_seller.sort_values(by=2018, ascending=False)
 		pivot_seller
 
-	Hasil:
+Hasil:
 
 ![data1](https://github.com/elleferrd/wragglingproject/assets/137087598/6d55e81a-c6e8-4a8a-8640-62d5341ab3a8)
 
@@ -228,7 +230,7 @@ Pengolahan data untuk mengetahui jumlah jenis produk untuk masing-masing kategor
 		pivot_product = pivot_product.sort_values(by=2018, ascending=False)
 		pivot_product
 
-	Hasil:
+Hasil:
 
  ![data1](https://github.com/elleferrd/wragglingproject/assets/137087598/bceb54bb-924d-4bcf-bfcc-b76f0498a73b)
 
@@ -241,7 +243,7 @@ Pengolahan rata-rata harga produk tidak menyertakan harga produk yang terlalu ti
 		rerataharga = pd.DataFrame(rerataharga).sort_values(by ='price_x', ascending =False)
 		rerataharga =rerataharga.head(10)
 
-	Hasil:
+Hasil:
 
 ![data1](https://github.com/elleferrd/wragglingproject/assets/137087598/da5f5415-2350-4da2-b579-f00c8894e187)
 
@@ -284,7 +286,8 @@ Kesimpulan yang dapat ditarik dari pengolahan data tersebut adalah semakin banya
 ![pie chart](https://github.com/elleferrd/wragglingproject/assets/137087598/cc74f889-c1fa-485b-9767-111b32562857)
 
 
-#Skrip grafik pertama
+Skrip grafik pertama
+
 		#Sample data for the bar plots
 		categories = pivot_produk_popular['product_category']
 		values1 = pivot_produk_popular[2016]
@@ -324,6 +327,7 @@ Kesimpulan yang dapat ditarik dari pengolahan data tersebut adalah semakin banya
 		plt.show()
 
 Skrip grafik kedua:
+
 		#Sample data for the bar plots
 		categories = pivot_produk_penjualan['product_category']
 		values1 = pivot_produk_penjualan[2016]
@@ -363,6 +367,7 @@ Skrip grafik kedua:
 		plt.show()
 
 Skrip grafik ketiga:
+
 		#mengisi sel kosong
 		pivot_seller.reset_index(drop=False, inplace = True)
 		pivot_product.reset_index(drop=False, inplace = True)
